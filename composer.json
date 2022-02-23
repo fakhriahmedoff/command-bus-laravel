@@ -5,14 +5,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8|^8.1",
+        "php": "^7.4|^8.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "predis/predis": "^1.1",
-        "rosamarsky/laravel-command-bus": "^2.0"
+        "rosamarsky/laravel-command-bus": "^2.0",
+        "skyronic/laravel-file-generator": "^0.1.13"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

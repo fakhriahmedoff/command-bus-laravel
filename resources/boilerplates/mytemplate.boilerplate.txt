@@ -1,0 +1,10 @@
+{
+   "name": "My New Template",
+   "out": "edit/me/{{ $name }}.txt",
+   "params": {
+        "myParam": "optional"
+   }
+}
+---
+
+Template goes here. Blade syntax works. You can use a parameter like {{ $myParam }}

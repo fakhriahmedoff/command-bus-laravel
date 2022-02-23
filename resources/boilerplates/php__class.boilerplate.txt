@@ -1,0 +1,21 @@
+{
+   "name": "PHP Class in 'app' Directory",
+   "out": "app/{{ $name }}.php",
+   "params": {
+       "extends": "optional",
+       "constructor": "flag"
+   }
+}
+---
+<?php
+
+namespace {{ Format::getNamespace($path) }};
+@if($extends) use Rosamarsky\CommandBus\Command; @endif
+
+class {{ Format::baseName($name) }} @if($extends)implements {{ $extends }}@endif  {
+@if($constructor)
+    public function __construct () {
+
+    }
+@endif
+}
