@@ -48,7 +48,5 @@ class commandBus extends Command
         Artisan::call('generate php:class "Handlers/'.$this->argument('folder').'Handler/Create'.$this->argument('folder').'"');
         Artisan::call('generate php:class "Handlers/'.$this->argument('folder').'Handler/Update'.$this->argument('folder').'"');
         Artisan::call('generate php:class "Handlers/'.$this->argument('folder').'Handler/Delete'.$this->argument('folder').'"');
-
-        return rand(1,555555555555);
     }
 }
