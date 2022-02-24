@@ -3,19 +3,54 @@
    "out": "app/{{ $name }}.php",
    "params": {
        "extends": "optional",
-       "constructor": "flag"
+       "implements": "optional",
+       "constructor": "flag",
+       "table":"optional",
+       "handler":"optional"
+
    }
 }
 ---
 <?php
 
 namespace {{ Format::getNamespace($path) }};
-@if($extends) use Rosamarsky\CommandBus\Command; @endif
+@if($implements == 'Command')use Rosamarsky\CommandBus\Command; @endif
+@if($implements)use Rosamarsky\CommandBus\Handler; @endif
+@if($implements == 'Handler')use Rosamarsky\CommandBus\Command;@endif
 
-class {{ Format::baseName($name) }} @if($extends)implements {{ $extends }}@endif  {
+
+class {{ Format::baseName($name) }} @if($extends)extends {{ $extends }}@endif @if($implements)implements {{ $implements }}@endif  {
 @if($constructor)
-    public function __construct () {
+    @php
+         $columns = \Illuminate\Support\Facades\DB::getSchemaBuilder()->getColumnListing($table);
+         $data = '';
+    @endphp
+    @if($table)
+        @php
+             foreach($columns as $column) {
+                echo "\n    " . "public $" . $column . ";";
+             }
+        @endphp
 
-    }
+    @endif
+
+    public function __construct($data){
+                        @php
+                          foreach($columns as $column) {
+                                  echo "\n              $" . 'this->' . $column  .'= $data["'.  $column .'"]' . ' ?? null'    . ";";
+                           }
+                       @endphp
+
+       }
+
 @endif
+    @if($implements == 'Handler')
+
+    public function handle(Command $command)
+    {
+    // TODO: Implement handle() method.
+    }
+
+    @endif
+
 }

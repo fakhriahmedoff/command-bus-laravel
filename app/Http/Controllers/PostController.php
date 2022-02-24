@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Commands\PostCommands\CreatePost;
+use App\Commands\PostsCommands\CreatePosts;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,10 @@ class PostController extends AbstractController
      */
     public function store(Request $request)
     {
-        $this->dispatch(new CreatePost($request->title));
+
+
+
+        $this->dispatch(new CreatePost($request->all()));
     }
 
     /**
