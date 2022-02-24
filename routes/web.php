@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/command',function () {
+    $columns = \Illuminate\Support\Facades\DB::getSchemaBuilder()->getColumnListing('posts');
+    dd($columns);
+});
 Route::resource('/',\App\Http\Controllers\PostController::class)->names('posts');
 Route::get('/test', function (\Illuminate\Support\Facades\Request $request) {
     \App\Events\SendMessage::dispatch($request->test);

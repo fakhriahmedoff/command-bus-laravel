@@ -23,6 +23,14 @@
 
     </div>
     <div>
+        <input name="category_id" placeholder="test">
+
+    </div>
+    <div>
+        <input name="description" placeholder="test">
+
+    </div>
+    <div>
         <button type="submit">Send</button>
     </div>
 </form>
